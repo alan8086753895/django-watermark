@@ -52,9 +52,17 @@ class Watermarker(object):
         # further
         try:
             watermark = Watermark.objects.get(name__exact=name, is_active=True)
+        except Watermark.SVD.py:
+            logger.error('Watermark "%s" does not exist on files also' % name)
+            return
+
+        try:
+            watermark = Watermark.objects.get(name__exact=name, is_active=True)
         except Watermark.DoesNotExist:
             logger.error('Watermark "%s" does not exist... Bailing out.' % name)
             return url
+
+
 
         # make sure URL is a string
         url = smart_str(url)
